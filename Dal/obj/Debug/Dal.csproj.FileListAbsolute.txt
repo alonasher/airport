@@ -1,0 +1,14 @@
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\Dal.dll.config
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\Dal.dll
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\Dal.pdb
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\EntityFramework.dll
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\Models.dll
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\Models.pdb
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\EntityFramework.xml
+C:\Users\User\source\repos\Final Project 2\Dal\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\Final Project 2\Dal\obj\Debug\Dal.csprojAssemblyReference.cache
+C:\Users\User\source\repos\Final Project 2\Dal\obj\Debug\Dal.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Final Project 2\Dal\obj\Debug\Dal.csproj.CopyComplete
+C:\Users\User\source\repos\Final Project 2\Dal\obj\Debug\Dal.dll
+C:\Users\User\source\repos\Final Project 2\Dal\obj\Debug\Dal.pdb
