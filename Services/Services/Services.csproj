@@ -39,10 +39,15 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrivalService.cs" />
     <Compile Include="DataService.cs" />
-    <Compile Include="IDataService.cs" />
+    <Compile Include="DepartureService.cs" />
+    <Compile Include="Interfaces\IArrivalService.cs" />
+    <Compile Include="Interfaces\IDataService.cs" />
+    <Compile Include="Interfaces\IDepartureService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

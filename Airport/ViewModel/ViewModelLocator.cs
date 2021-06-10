@@ -1,7 +1,11 @@
 
+using Airport.ViewModel.UserControls;
+using BL;
+using BL.Interfaces;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
 using Services;
+using Services.Interfaces;
 using System.Data.Services;
 
 namespace Airport.ViewModel
@@ -12,19 +16,16 @@ namespace Airport.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             
+            SimpleIoc.Default.Register<IArrivalService, ArrivalService>();
+            SimpleIoc.Default.Register<IDepartureService, DepartureService>();
             SimpleIoc.Default.Register<IDataService, DataService>();
 
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<FlightsVM>();
         }
 
-        public MainViewModel Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
+        public FlightsVM FlightsView{ get { return ServiceLocator.Current.GetInstance<FlightsVM>(); } }
+
         
         public static void Cleanup()
         {

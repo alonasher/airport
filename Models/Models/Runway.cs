@@ -8,6 +8,6 @@ namespace Models
     {
         public int ID { get; set; }
         public bool Occupied { get; set; }
-        public double Length { get; set; }
+        public int Length { get; set; }
     }
 }

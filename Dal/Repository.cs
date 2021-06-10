@@ -1,63 +1,73 @@
 ﻿using Models;
-using System;
+using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dal
 {
     public class Repository :IRepository
     {
-        private DataContext data = new DataContext();
+        private DataContext context = new DataContext();
+        //private MongoClient context;
 
         public Repository()
         {
-            //data.Planes.AddRange(new List<Plane>() {
-            //    new Plane() { Model = "ZX123", Seats = 100 },
-            //    new Plane() { Model = "AB456", Seats = 101}
-            //});
-            //data.Locations.AddRange(new List<Location>()
-            //{
-            //    new Location(){Name="First", Coor=new Coordinate(){X=12.3,Y=10.4},Duration=2},
-            //    new Location(){Name="Second", Coor=new Coordinate(){X=13.3,Y=11},Duration=1},
-            //});
 
-            //Queue<Location> process = new Queue<Location>();
-            //process.Enqueue(new Location() { Name = "First", Coor = new Coordinate() { X = 12.3, Y = 10.4 }, Duration = 2 });
-            //process.Enqueue(new Location() { Name = "Second", Coor = new Coordinate() { X = 13.3, Y = 11 }, Duration = 1 });
-            //data.Flights.AddRange(new List<Flight>()
+            //client = context.dbClient;
+            #region Old db UPDATE
+            //List<Location> l = new List<Location>() {
+            //    new Location(){ Coor = new Coordinate(){ X=12.3,Y=15.6},Duration = 1,Occupied = false, Role = Role.JetWay },
+            //    new Location(){ Coor = new Coordinate(){ X=14,Y=17},Duration = 1,Occupied = false, Role = Role.Runway },
+            //    new Location(){ Coor = new Coordinate(){ X=15,Y=18},Duration = 1,Occupied = false, Role = Role.TakeOffTrack },
+            //    new Location(){ Coor = new Coordinate(){ X=10,Y=12},Duration = 1,Occupied = false, Role = Role.ArrivalTrack },
+            //    new Location(){ Coor = new Coordinate(){ X=1,Y=5},Duration = 1,Occupied = false, Role = Role.Aerial } };
+            //context.Locations.AddRange(l);
+            ////context.SaveChanges();
+
+            //Queue<Flight> flights = new Queue<Flight>();
+            //foreach (Flight f in context.Flights)
             //{
-            //    new Flight(){FlightProcess=process,Landed=true,PlaneID=1}
-            //});
-            //data.SaveChanges();
+            //    flights.Enqueue(f);
+            //}
+            //Airport airport = new Airport()
+            //{
+            //    ID = 1,
+            //    FlightsBoard = flights,
+            //    Locations = context.Locations.ToList()
+            //};
+            //context.Airports.Add(airport);
+            //context.SaveChanges();
+            #endregion
+
+
         }
 
         #region Get
-        public IEnumerable<Location> Locations => data.Locations;
+        public IEnumerable<Location> Locations => context.Locations;
+            
+        public IEnumerable<Flight> Flights => context.Flights;
 
-        public IEnumerable<Flight> Flights => data.Flights;
+        public Airport Airport => context.Airports.FirstOrDefault();
 
-        public IEnumerable<Plane> Planes => data.Planes;
         #endregion
 
         #region Add Funcs
         public void AddFlight(Flight flight)
         {
-            data.Flights.Add(flight);
-            data.SaveChanges();
+            context.Flights.Add(flight);
+            context.SaveChanges();
         }
 
         public void AddLocation(Location location)
         {
-            data.Locations.Add(location);
-            data.SaveChanges();
+            context.Locations.Add(location);
+            context.SaveChanges();
         }
 
-        public void AddPlane(Plane plane)
+        public void AddAirport(Airport airport)
         {
-            data.Planes.Add(plane);
-            data.SaveChanges();
+            context.Airports.Add(airport);
+            context.SaveChanges();
         }
         #endregion
     }
