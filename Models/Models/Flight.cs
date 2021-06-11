@@ -7,10 +7,10 @@ namespace Models
     public class Flight
     {
         public int ID { get; set; }
-        public virtual List<Location> FlightRoute { get; set; }
         public string Plane { get; set; }
         public bool Landed { get; set; }
-        public virtual Airport Airport{get;set;}
+        public virtual List<Location> FlightRoute { get; set; }
+        public virtual List<Airport> Airport{get;set;}
 
         public override string ToString()
         {

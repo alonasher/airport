@@ -1,5 +1,4 @@
 ﻿using Models;
-using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,8 +12,7 @@ namespace Dal
         public Repository()
         {
 
-            //client = context.dbClient;
-            #region Old db UPDATE
+            #region db UPDATE
             //List<Location> l = new List<Location>() {
             //    new Location(){ Coor = new Coordinate(){ X=12.3,Y=15.6},Duration = 1,Occupied = false, Role = Role.JetWay },
             //    new Location(){ Coor = new Coordinate(){ X=14,Y=17},Duration = 1,Occupied = false, Role = Role.Runway },
@@ -24,10 +22,12 @@ namespace Dal
             //context.Locations.AddRange(l);
             ////context.SaveChanges();
 
-            //Queue<Flight> flights = new Queue<Flight>();
+            ////Queue<Flight> flights = new Queue<Flight>();
+            //List<Flight> flights = new List<Flight>();
             //foreach (Flight f in context.Flights)
             //{
-            //    flights.Enqueue(f);
+            //    //flights.Enqueue(f);
+            //    flights.Add(f);
             //}
             //Airport airport = new Airport()
             //{

@@ -13,6 +13,7 @@ namespace Models
         public bool Occupied { get; set; }
         public int Duration { get; set; }
         public Role Role { get; set; }
-        public virtual List<Flight> flight { get; set; }
+        public virtual List<Flight> Flights { get; set; }
+        public virtual List<Airport> Airports { get; set; }
     }
 }

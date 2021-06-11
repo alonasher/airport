@@ -17,12 +17,12 @@ namespace BL
             if (locations == null || locations.Count == 0)
                 return null;
 
-            Queue<Location> route = GetRandomArrivaleRoute(locations);
+            var route = GetRandomArrivaleRoute(locations).ToList();
             Plane plane = SimulatorService.GetRandomPlane();
 
             Flight flight = new Flight()
             {
-                FlightRoute = route.ToList(),
+                FlightRoute = route,
                 Landed = false,
                 Plane = plane.ToString()
             };
