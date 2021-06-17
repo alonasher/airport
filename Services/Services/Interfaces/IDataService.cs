@@ -9,7 +9,7 @@ namespace Services
 {
     public interface IDataService
     {
-        void CreateNewAirport(Airport airport);
+        void Start();
         Task<IEnumerable<Flight>> GetFlightsAsync { get; }
         Action UpdateData { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using Models;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace Dal
@@ -11,7 +12,6 @@ namespace Dal
 
         public Repository()
         {
-
             #region db UPDATE
             //List<Location> l = new List<Location>() {
             //    new Location(){ Coor = new Coordinate(){ X=12.3,Y=15.6},Duration = 1,Occupied = false, Role = Role.JetWay },
@@ -20,15 +20,17 @@ namespace Dal
             //    new Location(){ Coor = new Coordinate(){ X=10,Y=12},Duration = 1,Occupied = false, Role = Role.ArrivalTrack },
             //    new Location(){ Coor = new Coordinate(){ X=1,Y=5},Duration = 1,Occupied = false, Role = Role.Aerial } };
             //context.Locations.AddRange(l);
-            ////context.SaveChanges();
+            //context.SaveChanges();
 
-            ////Queue<Flight> flights = new Queue<Flight>();
+            //Queue<Flight> flights = new Queue<Flight>();
             //List<Flight> flights = new List<Flight>();
             //foreach (Flight f in context.Flights)
             //{
             //    //flights.Enqueue(f);
             //    flights.Add(f);
             //}
+            //context.Flights.AddRange(flights);
+
             //Airport airport = new Airport()
             //{
             //    ID = 1,
@@ -38,16 +40,13 @@ namespace Dal
             //context.Airports.Add(airport);
             //context.SaveChanges();
             #endregion
-
-
         }
 
         #region Get
         public IEnumerable<Location> Locations => context.Locations;
             
         public IEnumerable<Flight> Flights => context.Flights;
-
-        public Airport Airport => context.Airports.FirstOrDefault();
+        //public Airport Airport => context.Airports.FirstOrDefault();
 
         #endregion
 
@@ -64,9 +63,18 @@ namespace Dal
             context.SaveChanges();
         }
 
-        public void AddAirport(Airport airport)
+        //public void AddAirport(Airport airport)
+        //{
+        //    context.Airports.Add(airport);
+        //    context.SaveChanges();
+        //}
+        #endregion
+
+        #region Update Funcs
+        public void UpdateLand(Flight flight)
         {
-            context.Airports.Add(airport);
+            var flightToUpdate = context.Flights.Find(flight.ID);
+            flightToUpdate.Landed = true;
             context.SaveChanges();
         }
         #endregion

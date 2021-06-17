@@ -9,10 +9,10 @@ namespace BL
 {
     public interface ILogic
     {
-        IEnumerable<Flight> GetFlights { get; }
+        IEnumerable<Flight> GetOngoingFlights { get; }
         IEnumerable<Location> GetLocations { get; }
         //IEnumerable<Airport> GetAirports { get; }
-        void CreateAirport();
+        //void CreateAirport();
         void Start();
     }
 }

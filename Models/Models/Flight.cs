@@ -10,15 +10,19 @@ namespace Models
         public string Plane { get; set; }
         public bool Landed { get; set; }
         public virtual List<Location> FlightRoute { get; set; }
-        public virtual List<Airport> Airport{get;set;}
+        //public virtual List<Airport> Airport{get;set;}
 
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder($"Flight ID: {ID}");
-            foreach (var item in FlightRoute)
+
+            if(FlightRoute != null)
             {
-                if(item != null)
-                    sb.Append($" -> {item.Role.ToString()}");
+                foreach (var item in FlightRoute)
+                {
+                    if (item != null)
+                        sb.Append($" -> {item.Role}");
+                }
             }
             return sb.ToString();
         }

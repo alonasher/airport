@@ -8,7 +8,8 @@ namespace Dal
     {
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Flight> Flights { get; set; }
-        public virtual DbSet<Airport> Airports { get; set; }
+        //try delete airport. 
+        //public virtual DbSet<Airport> Airports { get; set; }
 
 
         public DataContext() : base("sela-airport")

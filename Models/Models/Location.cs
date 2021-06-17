@@ -14,6 +14,6 @@ namespace Models
         public int Duration { get; set; }
         public Role Role { get; set; }
         public virtual List<Flight> Flights { get; set; }
-        public virtual List<Airport> Airports { get; set; }
+        //public virtual List<Airport> Airports { get; set; }
     }
 }

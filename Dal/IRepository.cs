@@ -13,9 +13,10 @@ namespace Dal
         void AddLocation(Location location);
         IEnumerable<Flight> Flights { get; }
         void AddFlight(Flight flight);
+        void UpdateLand(Flight flight);
         //IEnumerable<Plane> Planes { get; }
         //void AddPlane(Plane plane);
-        Airport Airport { get; }
-        void AddAirport(Airport airport);
+        //Airport Airport { get; }
+        //void AddAirport(Airport airport);
     }
 }

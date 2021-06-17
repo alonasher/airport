@@ -16,19 +16,18 @@ namespace Services
     {
         private Logic _logic = new Logic();
 
-        public DataService()
-        {
-            //_logic.Start();
-        }
+
+
+        public DataService(){}
 
         public Action UpdateData { get; set; }
 
-        IEnumerable<Flight> GetFlights => _logic.GetFlights;
-        Task<IEnumerable<Flight>> IDataService.GetFlightsAsync => Task.Run(() => GetFlights);
+        public IEnumerable<Flight> GetFlights => _logic.GetOngoingFlights;
+        public Task<IEnumerable<Flight>> GetFlightsAsync => Task.Run(() => GetFlights);
 
-        public void CreateNewAirport(Airport airport)
+        public void Start()
         {
-            //create new airport
+            _logic.Start();
         }
 
     }
