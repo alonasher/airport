@@ -1,10 +1,19 @@
 ﻿<Window x:Class="Airport.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:uc ="clr-namespace:Airport.Views"
-        Background ="LightGray">
+        xmlns:uc ="clr-namespace:Airport.Views">
     
     <Grid>
-        <uc:FlightsView/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <uc:TopBArView Grid.ColumnSpan="2"/>
+        <uc:AirportView Grid.Row="1"/>
+        <uc:FlightsView Grid.Row="1" Grid.Column="1"/>
     </Grid>
 </Window>

@@ -22,11 +22,15 @@ namespace Airport.ViewModel
 
 
             SimpleIoc.Default.Register<FlightsVM>();
+            SimpleIoc.Default.Register<TopBarVM>();
+            SimpleIoc.Default.Register<AirportVM>();
         }
 
         public FlightsVM FlightsView{ get { return ServiceLocator.Current.GetInstance<FlightsVM>(); } }
+        public TopBarVM TopBarView { get { return ServiceLocator.Current.GetInstance<TopBarVM>(); } }
+        public AirportVM AirportView { get { return ServiceLocator.Current.GetInstance<AirportVM>(); } }
 
-        
+
         public static void Cleanup()
         {
             // TODO Clear the ViewModels

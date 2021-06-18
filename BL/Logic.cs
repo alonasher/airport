@@ -38,14 +38,16 @@ namespace BL
 
         public IEnumerable<Location> GetLocations => data.Locations;
 
-#endregion
+        public Airport GetAirport => _airport;
+
+        #endregion
 
 
 
         public void Start()
         {
             CreateAirport();
-            StartSimulators();
+            //StartSimulators();
             ControlTower();
         }
 

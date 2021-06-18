@@ -1,0 +1,8 @@
+﻿<UserControl x:Class="Airport.Views.AirportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             DataContext="{Binding Source={StaticResource Locator}, Path=AirportView}">
+    <ListView ItemsSource="{Binding Legs}" DisplayMemberPath="Occupied">
+        
+    </ListView>
+</UserControl>

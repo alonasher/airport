@@ -42,3 +42,7 @@ C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\FlightsView.g
 C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\FlightsView.baml
 C:\Users\User\source\repos\Final Project 2\Airport\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\User\source\repos\Final Project 2\Airport\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\TopBArView.baml
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\TopBArView.g.cs
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\AirportView.baml
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\AirportView.g.cs

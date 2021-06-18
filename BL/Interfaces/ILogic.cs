@@ -11,7 +11,7 @@ namespace BL
     {
         IEnumerable<Flight> GetOngoingFlights { get; }
         IEnumerable<Location> GetLocations { get; }
-        //IEnumerable<Airport> GetAirports { get; }
+        Airport GetAirport{ get; }
         //void CreateAirport();
         void Start();
     }

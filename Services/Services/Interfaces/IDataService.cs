@@ -12,5 +12,6 @@ namespace Services
         void Start();
         Task<IEnumerable<Flight>> GetFlightsAsync { get; }
         Action UpdateData { get; set; }
+        Task<Airport> GetAirportAsync { get; }
     }
 }
