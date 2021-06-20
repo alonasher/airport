@@ -1,8 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
 using Models;
 using Services;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 
 namespace Airport.ViewModel.UserControls
 {
@@ -14,17 +16,26 @@ namespace Airport.ViewModel.UserControls
         public ObservableCollection<Location> Legs { get => legs; set =>Set(ref legs,value) ; }
         private Models.Airport _airport;
 
+        private DispatcherTimer dt;
+        private int Refresh_Time=1;
+
         public AirportVM(IDataService service)
         {
             this.service = service;
-            GetFlightsAsync();
-            
+            GetAirport();
+            Start();
         }
 
-        //not working!!
-        private async void GetFlightsAsync()
+        private void Start()
         {
-            _airport = await service.GetAirportAsync;
+            dt = new DispatcherTimer() { Interval = new TimeSpan(0, 0, Refresh_Time) };
+            dt.Tick += (s, e) => GetAirport();
+            dt.Start();
+        }
+
+        private void GetAirport()
+        {
+            _airport = service.GetAirport;
             Legs = new ObservableCollection<Location>(_airport.Legs);
         }
     }

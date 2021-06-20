@@ -15,6 +15,7 @@ namespace BL
 {
     public class Logic :ILogic
     {
+        private const int Seconds = 10;
         private Repository data = new Repository();
         private ArrivalSimulator _arrival = new ArrivalSimulator();
         private DepartureSimulator _departure = new DepartureSimulator();
@@ -24,6 +25,7 @@ namespace BL
 
         public Logic()
         {
+            CreateAirport();
             //for (int i = 0; i < 5; i++)
             //{
             //    AddNewFlight(_arrival.GenerateArrival(data.Locations.ToList()));
@@ -46,8 +48,9 @@ namespace BL
 
         public void Start()
         {
-            CreateAirport();
-            //StartSimulators();
+            //CreateAirport();
+            StartSimulators();
+            //Task.Delay(10000);
             ControlTower();
         }
 
@@ -57,6 +60,7 @@ namespace BL
             {
                 _airport.FlightsBoard.Enqueue(flight);
                 data.AddFlight(flight);
+                Task.Run(() => StartFlight(flight));
             }
         }
 
@@ -68,7 +72,7 @@ namespace BL
             dt.Tick += (s, e) =>  AddNewFlight(_arrival.GenerateArrival(locationsList));
             dt.Tick += (s, e) =>  AddNewFlight(_departure.GenerateDeparture(locationsList));
 
-            dt.Interval = new TimeSpan(0, 0, 10);
+            dt.Interval = new TimeSpan(0, 0, Seconds);
             dt.Start();
         }
 
@@ -84,8 +88,7 @@ namespace BL
 
         private void ControlTower()
         {
-            //Queue<Task> tasks = new Queue<Task>();
-            while (_airport.FlightsBoard.Count != 0 && _airport.FlightsBoard != null)
+            while (_airport.FlightsBoard.Count != 0)
             {
                 Flight current = _airport.FlightsBoard.Dequeue();
                 //need to be task
@@ -102,10 +105,10 @@ namespace BL
                     Location flightCurrentLocation = flight.FlightRoute[0];
                     if (!IsOccupied(flightCurrentLocation))
                     {
-                        ChangeLocationStatus(flightCurrentLocation);
+                        ChangeLocationStatus(flightCurrentLocation,flight);
                         WaitDuration(flightCurrentLocation);
                         flight.FlightRoute.RemoveAt(0);
-                        ChangeLocationStatus(flightCurrentLocation);
+                        ChangeLocationStatus(flightCurrentLocation,flight);
                     }
                     Trace.WriteLine($"here... {flight.FlightRoute.Count}");
   
@@ -121,9 +124,13 @@ namespace BL
             Thread.Sleep(timeInMili);
         }
 
-        private void ChangeLocationStatus(Location currentLocation)
+        private void ChangeLocationStatus(Location currentLocation,Flight currentFlight)
         {
             _airport.Legs.Find((x) => x.ID == currentLocation.ID).Occupied = !_airport.Legs.Find((x) => x.ID == currentLocation.ID).Occupied;
+            if (_airport.Legs.Find(x => x.ID == currentLocation.ID).FlightID == 0)
+                _airport.Legs.Find(x => x.ID == currentLocation.ID).FlightID = currentFlight.ID;
+            else
+                _airport.Legs.Find(x => x.ID == currentLocation.ID).FlightID = 0;
         }
 
         private bool IsOccupied(Location currentLocation)
