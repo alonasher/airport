@@ -48,9 +48,7 @@ namespace BL
 
         public void Start()
         {
-            //CreateAirport();
             StartSimulators();
-            //Task.Delay(10000);
             ControlTower();
         }
 
@@ -103,11 +101,13 @@ namespace BL
                 while (flight.FlightRoute.Count > 0)
                 {
                     Location flightCurrentLocation = flight.FlightRoute[0];
+                    //Location flightCurrentLocation = flight.FlightRoute.Peek();
                     if (!IsOccupied(flightCurrentLocation))
                     {
                         ChangeLocationStatus(flightCurrentLocation,flight);
                         WaitDuration(flightCurrentLocation);
                         flight.FlightRoute.RemoveAt(0);
+                        //flight.FlightRoute.Dequeue();
                         ChangeLocationStatus(flightCurrentLocation,flight);
                     }
                     Trace.WriteLine($"here... {flight.FlightRoute.Count}");

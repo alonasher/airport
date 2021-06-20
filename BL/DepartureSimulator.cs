@@ -19,6 +19,7 @@ namespace BL
             if (locations == null || locations.Count == 0)
                 return null;
             var route = GetRandomDepartureRoute(locations).ToList();
+            //var route = GetRandomDepartureRoute(locations);
             Plane plane = SimulatorService.GetRandomPlane();
 
             Flight flight = new Flight()
