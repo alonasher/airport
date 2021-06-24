@@ -71,8 +71,8 @@ namespace Airport.ViewModel.UserControls
 
         private void SetOnGrid(Coordinate coor,UIElement element ,Grid grid)
         {
-            Grid.SetRow(element, (int)coor.Y-1);
-            Grid.SetColumn(element,(int)coor.X-1);
+            Grid.SetRow(element, ((int)coor.Y-1));
+            Grid.SetColumn(element,((int)coor.X-1));
             grid.Children.Add(element);
         }
     }

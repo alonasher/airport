@@ -6,7 +6,7 @@ namespace Models
 {
     public class Plane
     {
-        public Guid id { get; set; }
+        public Guid ID { get; set; }
         public string model { get; set; }
         public int seats { get; set; }
         public override string ToString()

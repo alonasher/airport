@@ -10,7 +10,7 @@ namespace BL
 {
     public class ArrivalSimulator : IArrivalSimulator
     {
-        private Random r = new Random();
+        
 
         public Flight GenerateArrival(List<Location> locations)
         {
@@ -33,33 +33,32 @@ namespace BL
         private Queue<Location> GetRandomArrivaleRoute(List<Location> locations)
         {
             Queue<Location> flightRoute = new Queue<Location>();
-            //get first aerial location
-            //Location aerial = locations.Find((x) => x.Role == Role.Aerial && x.Order == 1);
-            //flightRoute.Enqueue(aerial);
 
-            //get the rest aerial locations
-            IEnumerable<Location> aerials = locations.FindAll((x) => x.Role == Role.Aerial);
-            foreach (Location l in aerials)
-            {
-                flightRoute.Enqueue(l);
-            }
+            flightRoute.Enqueue(GetAerial(locations, Role.AerialFirst));
+            flightRoute.Enqueue(GetAerial(locations, Role.AerialSecond));
+            flightRoute.Enqueue(GetAerial(locations, Role.AerialThird));
 
-            //get runway
-            List<Location> runways = locations.FindAll((x) => x.Role == Role.Runway);
-            int randomRunwayPos = r.Next(0, runways.Count);
-            flightRoute.Enqueue(runways[randomRunwayPos]);
 
-            //get arrrival track
-            List<Location> ArrivalsTracks = locations.FindAll((x) => x.Role == Role.ArrivalTrack);
-            int randomTrackPos = r.Next(0, ArrivalsTracks.Count);
-            flightRoute.Enqueue(ArrivalsTracks[randomTrackPos]);
+            flightRoute.Enqueue(GetRandomLeg(locations, Role.Runway));
 
-            //get random jetway
-            List<Location> jetways = locations.FindAll((x) => x.Role == Role.JetWay);
-            int randomStartingPos = r.Next(0, jetways.Count);
-            flightRoute.Enqueue(jetways[randomStartingPos]);
+            flightRoute.Enqueue(GetRandomLeg(locations, Role.ArrivalTrack));
+
+            flightRoute.Enqueue(GetRandomLeg(locations, Role.JetWay));
 
             return flightRoute;
+        }
+
+        private Location GetRandomLeg(List<Location> locations,Role role)
+        {
+            Random r = new Random();
+            var legs = locations.FindAll((x) => x.Role == role);
+            int randomIndex = r.Next(0, legs.Count);
+            return legs[randomIndex];
+        }
+
+        private static Location GetAerial(List<Location> locations,Role role)
+        {
+            return locations.Find((x) => x.Role == role);
         }
     }
 }

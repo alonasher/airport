@@ -20,7 +20,7 @@ namespace BL
             string model = GetRandomModel();
             Plane p = new Plane()
             {
-                id = Guid.NewGuid(),
+                ID = Guid.NewGuid(),
                 model = model.ToString(),
                 seats = r.Next(minSeats, maxSeats)
             };

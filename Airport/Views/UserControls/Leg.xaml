@@ -2,9 +2,9 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     x:Class="Airport.Views.UserControls.Leg">
-    <Canvas x:Name="mainCanvas" Width="100" Height="100">
+    <Canvas x:Name="mainCanvas">
         <Grid>
-            <Path x:Name="Path"  Stroke="Black" Fill="Red" Width="{Binding ActualWidth,ElementName=mainCanvas}" Height="{Binding ActualWidth,ElementName=mainCanvas}"
+            <Path x:Name="Path"  Stroke="Black" Fill="Red" Width="100" Height="100"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="0" Stretch="Fill" 
             Data="M8.660254,0 L17.320508,5 17.320508,15 8.660254,20 0,15 0,5 8.660254,0 z"/>
             <TextBlock x:Name="tb" Panel.ZIndex="100" />

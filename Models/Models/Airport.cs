@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 
 namespace Models
 {
     public class Airport
     {
         public int ID { get; set; }
-        public virtual List<Location> Legs { get; set; }
-        public virtual Queue<Flight> FlightsBoard { get; set; }
+        public ConcurrentBag<Location> Legs { get; set; }
+        public ConcurrentQueue<Flight> FlightsBoard { get; set; }
     }
 }

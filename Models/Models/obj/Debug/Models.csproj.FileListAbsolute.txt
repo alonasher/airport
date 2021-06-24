@@ -8,3 +8,4 @@ C:\Users\User\source\repos\Final Project 2\Models\Models\bin\Debug\System.Runtim
 C:\Users\User\source\repos\Final Project 2\Models\Models\bin\Debug\MongoDB.Bson.xml
 C:\Users\User\source\repos\Final Project 2\Models\Models\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\User\source\repos\Final Project 2\Models\Models\obj\Debug\Models.csproj.CopyComplete
+C:\Users\User\source\repos\Final Project 2\Models\Models\obj\Debug\Models.csprojAssemblyReference.cache

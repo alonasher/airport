@@ -8,7 +8,9 @@ namespace Models
 {
     public enum Role
     {
-        Aerial,
+        AerialFirst,
+        AerialSecond,
+        AerialThird,
         Runway,
         ArrivalTrack,
         TakeOffTrack,

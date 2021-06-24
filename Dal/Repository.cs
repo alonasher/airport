@@ -1,13 +1,19 @@
 ﻿using Models;
+using Services.Static;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Infrastructure;
+using System.Diagnostics;
 using System.Linq;
+
 
 namespace Dal
 {
-    public class Repository :IRepository
+    public class Repository : IRepository
     {
         private DataContext context = new DataContext();
+        private object locker = new object();
         //private MongoClient context;
 
         public Repository()
@@ -18,7 +24,10 @@ namespace Dal
                 new Location(){ Coor = new Coordinate(){ X=2,Y=2},Duration = 1,Occupied = false, Role = Role.Runway },
                 new Location(){ Coor = new Coordinate(){ X=2,Y=3},Duration = 1,Occupied = false, Role = Role.TakeOffTrack },
                 new Location(){ Coor = new Coordinate(){ X=2,Y=5},Duration = 1,Occupied = false, Role = Role.ArrivalTrack },
-                new Location(){ Coor = new Coordinate(){ X=5,Y=1},Duration = 1,Occupied = false, Role = Role.Aerial } };
+                new Location(){ Coor = new Coordinate(){ X=3,Y=1},Duration = 1,Occupied = false, Role = Role.AerialFirst },
+                new Location(){ Coor = new Coordinate(){ X=4,Y=1},Duration = 1,Occupied = false, Role = Role.AerialSecond },
+                new Location(){ Coor = new Coordinate(){ X=5,Y=1},Duration = 1,Occupied = false, Role = Role.AerialThird },
+            };
             context.Locations.AddRange(l);
             context.SaveChanges();
 
@@ -43,10 +52,17 @@ namespace Dal
         }
 
         #region Get
-        public IEnumerable<Location> Locations => context.Locations;
-            
-        public IEnumerable<Flight> Flights => context.Flights;
+        public IEnumerable<Location> Locations => new List<Location>(context.Locations);
+
+        public IEnumerable<Flight> Flights => new List<Flight>(context.Flights);
+        public IEnumerable<Flight> Flights2()
+        {
+            lock(locker)
+                return new List<Flight>(context.Flights); 
+        }
+
         //public Airport Airport => context.Airports.FirstOrDefault();
+
 
         #endregion
 
@@ -54,7 +70,11 @@ namespace Dal
         public void AddFlight(Flight flight)
         {
             context.Flights.Add(flight);
-            context.SaveChanges();
+            lock (locker)
+            {
+                context.SaveChanges();
+            }
+            //ResetEventStatic.AddResetEvent.Set();
         }
 
         public void AddLocation(Location location)
@@ -63,19 +83,22 @@ namespace Dal
             context.SaveChanges();
         }
 
-        //public void AddAirport(Airport airport)
-        //{
-        //    context.Airports.Add(airport);
-        //    context.SaveChanges();
-        //}
         #endregion
 
         #region Update Funcs
         public void UpdateLand(Flight flight)
         {
-            var flightToUpdate = context.Flights.Find(flight.ID);
-            flightToUpdate.Landed = true;
-            context.SaveChanges();
+            lock (locker)
+            {
+
+                context.Flights.Find(flight.ID).Landed = true;
+                lock (locker)
+                {
+                    
+                    
+                    context.SaveChanges();
+                }
+            }
         }
         #endregion
     }
