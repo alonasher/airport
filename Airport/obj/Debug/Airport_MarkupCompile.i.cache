@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\User\source\repos\Final Project 2\Airport\App.xaml
-4285863321
+6-904062369
 
-13263338610
+16-1777648559
 126310690777
-MainWindow.xaml;Views\AirportView.xaml;Views\FlightsView.xaml;Views\TopBArView.xaml;
+MainWindow.xaml;Views\AirportLegsView.xaml;Views\AirportView.xaml;Views\FlightsView.xaml;Views\TopBArView.xaml;Views\UserControls\Leg.xaml;
 
 True
 

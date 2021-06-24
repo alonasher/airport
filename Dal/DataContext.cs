@@ -14,7 +14,7 @@ namespace Dal
 
         public DataContext() : base("sela-airport")
         {
-            //Database.SetInitializer(new DropCreateDatabaseAlways<DataContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<DataContext>());
             _ = SqlProviderServices.Instance;
 
         }

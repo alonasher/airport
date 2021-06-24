@@ -46,3 +46,7 @@ C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\TopBArView.ba
 C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\TopBArView.g.cs
 C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\AirportView.baml
 C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\AirportView.g.cs
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\UserControls\Leg.baml
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\UserControls\Leg.g.cs
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\AirportLegsView.baml
+C:\Users\User\source\repos\Final Project 2\Airport\obj\Debug\Views\AirportLegsView.g.cs

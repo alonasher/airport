@@ -13,14 +13,14 @@ namespace Dal
         public Repository()
         {
             #region db UPDATE
-            //List<Location> l = new List<Location>() {
-            //    new Location(){ Coor = new Coordinate(){ X=12.3,Y=15.6},Duration = 1,Occupied = false, Role = Role.JetWay },
-            //    new Location(){ Coor = new Coordinate(){ X=14,Y=17},Duration = 1,Occupied = false, Role = Role.Runway },
-            //    new Location(){ Coor = new Coordinate(){ X=15,Y=18},Duration = 1,Occupied = false, Role = Role.TakeOffTrack },
-            //    new Location(){ Coor = new Coordinate(){ X=10,Y=12},Duration = 1,Occupied = false, Role = Role.ArrivalTrack },
-            //    new Location(){ Coor = new Coordinate(){ X=1,Y=5},Duration = 1,Occupied = false, Role = Role.Aerial } };
-            //context.Locations.AddRange(l);
-            //context.SaveChanges();
+            List<Location> l = new List<Location>() {
+                new Location(){ Coor = new Coordinate(){ X=3,Y=3},Duration = 1,Occupied = false, Role = Role.JetWay },
+                new Location(){ Coor = new Coordinate(){ X=2,Y=2},Duration = 1,Occupied = false, Role = Role.Runway },
+                new Location(){ Coor = new Coordinate(){ X=2,Y=3},Duration = 1,Occupied = false, Role = Role.TakeOffTrack },
+                new Location(){ Coor = new Coordinate(){ X=2,Y=5},Duration = 1,Occupied = false, Role = Role.ArrivalTrack },
+                new Location(){ Coor = new Coordinate(){ X=5,Y=1},Duration = 1,Occupied = false, Role = Role.Aerial } };
+            context.Locations.AddRange(l);
+            context.SaveChanges();
 
             //Queue<Flight> flights = new Queue<Flight>();
             //List<Flight> flights = new List<Flight>();

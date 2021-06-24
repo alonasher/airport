@@ -11,9 +11,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <uc:TopBArView Grid.ColumnSpan="2"/>
-        <uc:AirportView Grid.Row="1"/>
+        <uc:AirportView Grid.Row="2" Grid.Column="2"/>
         <uc:FlightsView Grid.Row="1" Grid.Column="1"/>
+        <uc:AirportLegsView Grid.Row="1" Grid.RowSpan="2"/>
     </Grid>
 </Window>

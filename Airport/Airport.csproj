@@ -71,10 +71,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\UserControls\AirportLegsVM.cs" />
     <Compile Include="ViewModel\UserControls\AirportVM.cs" />
     <Compile Include="ViewModel\UserControls\FlightsVM.cs" />
     <Compile Include="ViewModel\UserControls\TopBarVM.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\AirportLegsView.xaml.cs">
+      <DependentUpon>AirportLegsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\AirportView.xaml.cs">
       <DependentUpon>AirportView.xaml</DependentUpon>
     </Compile>
@@ -83,6 +87,9 @@
     </Compile>
     <Compile Include="Views\TopBArView.xaml.cs">
       <DependentUpon>TopBArView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\Leg.xaml.cs">
+      <DependentUpon>Leg.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +103,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AirportLegsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AirportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TopBArView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\Leg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
